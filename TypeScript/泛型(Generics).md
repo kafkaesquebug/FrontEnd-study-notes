@@ -246,7 +246,7 @@ getProperty(x, "m"); // error: Argument of type 'm' isn't assignable to 'a' | 'b
 
 <br/>
 
-### 在泛型里使用class(待理解)
+### <font color="purple">在泛型里使用class??</font>
 
 使用泛型创建工厂函数时，需要引用构造函数的类类型：
 
