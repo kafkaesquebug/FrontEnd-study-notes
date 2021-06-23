@@ -176,7 +176,7 @@ let myIdentity: GenericIdentityFn<number> = identity; // number
 
 ___Docs: "This makes the type parameter visible to all the other members of the interface."???___
 
-上例不再是泛型函数，而是把非泛型函数签名作为泛型类型一部分。 使用`GenericIdentityFn`时还得传入一个类型参数来指定泛型类型（例如上例的`number`），锁定了之后代码里使用的类型。
+__上例不再是泛型函数，而是把非泛型函数签名作为泛型类型一部分。 使用`GenericIdentityFn`时还得传入一个类型参数来指定泛型类型（例如上例的`number`），锁定了之后代码里使用的类型。__
 
 <br/>
 
@@ -223,6 +223,18 @@ function loggingIdentity<T extends Lengthwise>(arg: T): T { // extends ...
     console.log(arg.length);  // Now we know it has a .length property, so no more error
     return arg;
 }
+```
+
+现在这个泛型函数被定义了约束，因此它不再是适用于任意类型：
+
+```typescript
+loggingIdentity(3);  // Error, number doesn't have a .length property
+```
+
+必须传入符合约束类型的值：
+
+```typescript
+loggingIdentity({length: 10, value: 3}); // correct!!
 ```
 
 <br/>
